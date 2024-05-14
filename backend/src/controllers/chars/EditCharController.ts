@@ -30,7 +30,7 @@ class EditCharController {
                 cantrips
             });
 
-            console.log("ok")
+            console.log(`dados do personagem: ${id} editados`)
 
             return res.json(editChar);
 
