@@ -9,6 +9,7 @@ import { EditCharController } from "./controllers/chars/EditCharController";
 import { UpdateUserController } from "./controllers/user/UpdateUserController";
 import { DeleteCharController } from "./controllers/chars/DeleteCharController";
 import { DetailCharController } from "./controllers/chars/DetailCharController";
+import { RemoveUserController } from "./controllers/user/RemoveUserController";
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
@@ -23,6 +24,7 @@ router.post('/users', new CreateUserController().handle)
 router.post('/session', new AuthUserController().handle)
 router.get('/me', isAuthenticated, new DetailUserController().handle)
 router.put('/update', isAuthenticated, new UpdateUserController().handle)
+router.delete('/remove/user', isAuthenticated, new RemoveUserController().handle)
 
 //Rotas do personagem
 router.post('/char', isAuthenticated, new CreateCharController().handle)
