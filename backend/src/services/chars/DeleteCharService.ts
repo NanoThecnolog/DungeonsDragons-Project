@@ -6,13 +6,31 @@ interface CharIdRequest {
 
 class DeleteCharService {
     async execute({ id }: CharIdRequest) {
+        try {
 
-        const char = await prismaClient.char.delete({
-            where: {
-                id: id
-            }
-        })
-        return char;
+            await prismaClient.$transaction([
+                prismaClient.charClass.deleteMany({
+                    where: {
+                        charId: id
+                    }
+                })
+            ])
+            const char = await prismaClient.char.delete({
+                where: {
+                    id: id
+                }
+            })
+
+            console.log(`Personagem ${id} deletado`)
+            return char;
+
+
+        } catch (err) {
+            throw new Error(`Erro ao excluir personagem ${id}`)
+
+        }
+
+
 
 
     }

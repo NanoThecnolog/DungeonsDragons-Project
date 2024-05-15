@@ -6,6 +6,10 @@ class DeleteCharController {
         try {
             const id = req.query.id as string;
 
+            if (!id) {
+                return res.status(400).json({ error: "Nenhum personagem foi informado" });
+            }
+
             const removeCharService = new DeleteCharService();
 
             const char = await removeCharService.execute({
