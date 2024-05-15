@@ -14,7 +14,7 @@ class DetailUserService {
                 email: true
             }
         })
-        console.log(user_id);
+        //console.log(user_id);
 
         return user
 

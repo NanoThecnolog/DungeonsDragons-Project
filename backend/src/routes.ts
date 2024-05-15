@@ -10,6 +10,7 @@ import { UpdateUserController } from "./controllers/user/UpdateUserController";
 import { DeleteCharController } from "./controllers/chars/DeleteCharController";
 import { DetailCharController } from "./controllers/chars/DetailCharController";
 import { RemoveUserController } from "./controllers/user/RemoveUserController";
+import { ListCharController } from "./controllers/chars/ListCharController";
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
@@ -28,12 +29,10 @@ router.delete('/remove/user', isAuthenticated, new RemoveUserController().handle
 
 //Rotas do personagem
 router.post('/char', isAuthenticated, new CreateCharController().handle)
-//editar
-router.put('/char', isAuthenticated, new EditCharController().handle)
-//visualizar
+router.put('/char', isAuthenticated, new EditCharController().handle)//colocar upload.single(file) após criar a lógica de envio de imagem
 router.get('/char/detail', isAuthenticated, new DetailCharController().handle)
-//excluir?
-router.delete('/char', isAuthenticated, new DeleteCharController().handle)//passa o id como parametro
+router.get('/char/list', isAuthenticated, new ListCharController().handle)
+router.delete('/char', isAuthenticated, new DeleteCharController().handle)//passa o id como parametro no user_id
 
 
 export { router };
