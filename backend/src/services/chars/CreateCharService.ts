@@ -1,10 +1,15 @@
 import prismaClient from "../../prisma";
 
+interface CharClass {
+    level: string;
+    name: string;
+}
+
 interface CharRequest {
     name: string;
     race: string;
-    char_class: string;
-    level_class: string;
+    char_class: CharClass[];
+    level_class: string[];
     background: string;
     story: string;
     userId: string;
@@ -22,7 +27,7 @@ class CreateCharService {
         userId,
     }: CharRequest) {
 
-        if (name === '' || race === '' || char_class === '' || level_class === '' || background === '' || story === '') {
+        if (!name || !race || !char_class.length || !level_class.length || !background || !story) {
             throw new Error('Campos vazios')
         }
 
@@ -30,8 +35,14 @@ class CreateCharService {
             data: {
                 name: name,
                 race: race,
-                char_class: char_class,
-                level_class: level_class,
+                char_class: {
+                    createMany: {
+                        data: char_class.map(({ level, name }) => ({ level, name }))
+                    }
+                },
+                level_class: {
+                    set: level_class
+                },
                 background: background,
                 story: story,
                 userId: userId

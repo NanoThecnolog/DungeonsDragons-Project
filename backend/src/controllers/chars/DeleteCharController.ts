@@ -3,14 +3,21 @@ import { DeleteCharService } from "../../services/chars/DeleteCharService";
 
 class DeleteCharController {
     async handle(req: Request, res: Response) {
-        const id = req.query.id as string;
+        try {
+            const id = req.query.id as string;
 
-        const removeCharService = new DeleteCharService();
+            const removeCharService = new DeleteCharService();
 
-        const char = await removeCharService.execute({
-            id
-        })
-        return res.json(char)
+            const char = await removeCharService.execute({
+                id
+            })
+            return res.json(char)
+
+        } catch (err) {
+            console.log("erro ao deletar o personagem")
+            return res.status(500).json({ error: "Ocorreu um erro ao deletar o personagem" });
+        }
+
 
     }
 }

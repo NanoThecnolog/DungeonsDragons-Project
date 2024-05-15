@@ -30,45 +30,56 @@ model User {
 }
 
 model Char {
-  id                  String    @id @default(uuid())
+  id                  String      @id @default(uuid())
   name                String
   title               String?
   race                String
-  char_class          String
-  level_class         String
-  background          String
+  char_class          CharClass[]
+  level_class         String[]
+  background          String //antecedentes
   story               String
   image               String?
-  spells              String?
-  con                 String    @default("0")
-  str                 String    @default("0")
-  dex                 String    @default("0")
-  int                 String    @default("0")
-  wis                 String    @default("0")
-  cha                 String    @default("0")
-  wealth              String    @default("-")
-  max_hp              String    @default("-")
-  current_hp          String    @default("-")
-  temporary_hp        String    @default("-")
+  spells              String[]
+  con                 String      @default("0")
+  str                 String      @default("0")
+  dex                 String      @default("0")
+  int                 String      @default("0")
+  wis                 String      @default("0")
+  cha                 String      @default("0")
+  wealth              String      @default("-")
+  max_hp              String      @default("-")
+  current_hp          String      @default("-")
+  temporary_hp        String      @default("-")
   experience          String?
-  armor_class         String    @default("10")
-  ideals              String    @default("0")
-  bonds               String?
-  flaws               String?
-  features            String?
-  traits              String?
+  armor_class         String      @default("10")
+  ideals              String      @default("0")
+  bonds               String[] //vínculos
+  flaws               String[] //defeitos
+  features            String[] //caracteristicas
+  traits              String[]
   death_saving_throws String?
-  allies              String?
+  allies              String[]
   proficiency_bonus   String?
-  death_resistance    Boolean   @default(false)
-  personality_traits  String?
-  languages           String?
-  Initiative          String    @default("-")
-  cantrips            String?
+  death_resistance    Boolean     @default(false)
+  personality_traits  String[]
+  languages           String[]
+  Initiative          String      @default("-")
+  cantrips            String[]
   userId              String
-  user                User      @relation(fields: [userId], references: [id])
-  created_at          DateTime? @default(now())
-  updated_at          DateTime? @default(now())
+  user                User        @relation(fields: [userId], references: [id])
+  created_at          DateTime?   @default(now())
+  updated_at          DateTime?   @default(now())
 
   @@map("chars")
+}
+
+model CharClass {
+  id    String @id @default(uuid())
+  level String
+  name  String
+  char  Char   @relation(fields: [charId], references: [id])
+
+  charId String
+
+  @@map("char_classes")
 }
