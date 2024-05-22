@@ -14,7 +14,6 @@ class ListCharService {
                 title: true,
                 race: true,
                 char_class: true,
-                level_class: true,
                 image: true
             }
         })

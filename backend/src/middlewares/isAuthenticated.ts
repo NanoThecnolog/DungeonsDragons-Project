@@ -37,7 +37,7 @@ export function isAuthenticated(
         return next();
 
     } catch (err) {
-        console.log('erro no try do middleware')
+        console.log('erro no try do middleware', err)
         return res.status(401).end();
     }
 

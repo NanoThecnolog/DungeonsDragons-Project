@@ -9,10 +9,8 @@ interface CharRequest {
     name: string;
     race: string;
     char_class: CharClass[];
-    level_class: string[];
-    background: string;
-    story: string;
     userId: string;
+    image: string;
 
 }
 
@@ -21,13 +19,11 @@ class CreateCharService {
         name,
         race,
         char_class,
-        level_class,
-        background,
-        story,
         userId,
+        image,
     }: CharRequest) {
 
-        if (!name || !race || !char_class.length || !level_class.length || !background || !story) {
+        if (!name || !race) {
             throw new Error('Campos vazios')
         }
 
@@ -40,12 +36,8 @@ class CreateCharService {
                         data: char_class.map(({ level, name }) => ({ level, name }))
                     }
                 },
-                level_class: {
-                    set: level_class
-                },
-                background: background,
-                story: story,
-                userId: userId
+                userId: userId,
+                image: image,
 
             },
             select: {
@@ -53,7 +45,8 @@ class CreateCharService {
                 name: true,
                 race: true,
                 char_class: true,
-                level_class: true,
+                image: true,
+
             }
         })
 

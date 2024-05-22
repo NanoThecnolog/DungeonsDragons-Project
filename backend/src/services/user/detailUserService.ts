@@ -11,7 +11,8 @@ class DetailUserService {
             select: {
                 id: true,
                 name: true,
-                email: true
+                email: true,
+                avatar: true
             }
         })
         //console.log(user_id);

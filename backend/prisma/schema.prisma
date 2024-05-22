@@ -35,9 +35,8 @@ model Char {
   title               String?
   race                String
   char_class          CharClass[]
-  level_class         String[]
-  background          String //antecedentes
-  story               String
+  background          String? //antecedentes
+  story               String?
   image               String?
   spells              String[]
   con                 String      @default("0")
@@ -50,7 +49,7 @@ model Char {
   max_hp              String      @default("-")
   current_hp          String      @default("-")
   temporary_hp        String      @default("-")
-  experience          String?
+  experience          String      @default("0")
   armor_class         String      @default("10")
   ideals              String      @default("0")
   bonds               String[] //vínculos

@@ -8,10 +8,8 @@ class CreateCharController {
                 name,
                 race,
                 char_class,
-                level_class,
-                background,
-                story,
-                userId
+                userId,
+                image
 
 
             } = req.body;
@@ -26,10 +24,8 @@ class CreateCharController {
                 name,
                 race,
                 char_class,
-                level_class,
-                background,
-                story,
-                userId
+                userId,
+                image
             });
 
             return res.json(char);
