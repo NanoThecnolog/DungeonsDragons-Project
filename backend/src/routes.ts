@@ -28,9 +28,9 @@ router.put('/update', isAuthenticated, new UpdateUserController().handle)
 router.delete('/remove/user', isAuthenticated, new RemoveUserController().handle)
 
 //Rotas do personagem
-router.post('/char', isAuthenticated, new CreateCharController().handle)
+router.post('/char', isAuthenticated, upload.single('image'), new CreateCharController().handle)
 router.get('/char/detail', isAuthenticated, new DetailCharController().handle)
-router.put('/char', isAuthenticated, new EditCharController().handle)//colocar upload.single(file) após criar a lógica de envio de imagem
+router.put('/char', isAuthenticated, upload.single('image'), new EditCharController().handle)//colocar upload.single(file) após criar a lógica de envio de imagem
 router.get('/char/list', isAuthenticated, new ListCharController().handle)
 router.delete('/char', isAuthenticated, new DeleteCharController().handle)//passa o id como parametro no user_id
 

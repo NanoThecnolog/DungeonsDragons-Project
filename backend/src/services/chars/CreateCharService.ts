@@ -26,6 +26,9 @@ class CreateCharService {
         if (!name || !race) {
             throw new Error('Campos vazios')
         }
+        if (!char_class || !Array.isArray(char_class)) {
+            throw new Error('Invalid char_class data');
+        }
 
         const char = await prismaClient.char.create({
             data: {

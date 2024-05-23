@@ -74,7 +74,7 @@ model Char {
 
 model CharClass {
   id    String @id @default(uuid())
-  level String
+  level String @default("1")
   name  String
   char  Char   @relation(fields: [charId], references: [id])
 
