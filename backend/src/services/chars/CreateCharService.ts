@@ -52,6 +52,7 @@ class CreateCharService {
 
             }
         })
+        console.log(`Personagem ${name} Criado`)
 
 
         return char;

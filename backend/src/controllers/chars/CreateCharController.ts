@@ -33,6 +33,7 @@ class CreateCharController {
                 image
             });
 
+
             return res.json(char);
 
 

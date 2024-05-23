@@ -11,6 +11,7 @@ import { DeleteCharController } from "./controllers/chars/DeleteCharController";
 import { DetailCharController } from "./controllers/chars/DetailCharController";
 import { RemoveUserController } from "./controllers/user/RemoveUserController";
 import { ListCharController } from "./controllers/chars/ListCharController";
+import { DeleteCharClassController } from "./controllers/chars/DeleteCharClassController";
 
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 
@@ -33,6 +34,7 @@ router.get('/char/detail', isAuthenticated, new DetailCharController().handle)
 router.put('/char', isAuthenticated, upload.single('image'), new EditCharController().handle)//colocar upload.single(file) após criar a lógica de envio de imagem
 router.get('/char/list', isAuthenticated, new ListCharController().handle)
 router.delete('/char', isAuthenticated, new DeleteCharController().handle)//passa o id como parametro no user_id
+router.delete('/char/class', isAuthenticated, new DeleteCharClassController().handle)
 
 
 
