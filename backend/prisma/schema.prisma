@@ -55,7 +55,8 @@ model Char {
   bonds               String[] //vínculos
   flaws               String[] //defeitos
   features            String[] //caracteristicas
-  traits              String[]
+  traits              String[] //traços
+  expertise           String[] //Perícias
   death_saving_throws String?
   allies              String[]
   proficiency_bonus   String?

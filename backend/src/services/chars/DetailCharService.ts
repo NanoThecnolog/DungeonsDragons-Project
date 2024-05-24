@@ -14,8 +14,13 @@ class DetailCharService {
             }
 
         })
+        const charClass = await prismaClient.charClass.findMany({
+            where: {
+                charId: char_id
+            }
+        })
 
-        return char
+        return { char, charClass }
 
     }
 }
