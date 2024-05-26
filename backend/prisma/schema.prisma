@@ -56,7 +56,7 @@ model Char {
   flaws               String[] //defeitos
   features            String[] //caracteristicas
   traits              String[] //traços
-  expertise           String[] //Perícias
+  skills              String[] //Perícias
   death_saving_throws String?
   allies              String[]
   proficiency_bonus   String?
