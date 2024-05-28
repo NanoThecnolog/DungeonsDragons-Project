@@ -11,7 +11,7 @@ class DetailCharController {
                 return res.status(400).json({ error: "Nenhum personagem foi informado" });
             }
 
-            console.log(char_id);
+            //console.log(char_id);
 
             const detailCharService = new DetailCharService();
 

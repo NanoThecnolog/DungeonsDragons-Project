@@ -25,7 +25,9 @@ class EditCharController {
                 Initiative,
                 cantrips,
                 spells,
-                char_class
+                char_class,
+                background,
+                story
             } = req.body;
 
             const editCharService = new EditCharService();
@@ -50,7 +52,9 @@ class EditCharController {
                 Initiative,
                 cantrips,
                 spells,
-                char_class
+                char_class,
+                background,
+                story
             });
 
             console.log(`dados do personagem: ${id} editados`)
