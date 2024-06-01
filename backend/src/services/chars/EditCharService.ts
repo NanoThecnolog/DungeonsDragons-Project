@@ -5,6 +5,11 @@ interface CharClass {
     level: string;
     name: string;
 }
+interface NoteRequest {
+    id?: string;
+    text: string;
+    date?: Date;
+}
 
 interface CharRequest {
     id: string
@@ -29,6 +34,10 @@ interface CharRequest {
     char_class?: CharClass[]
     background?: string
     story?: string
+    current_hp?: string
+    max_hp?: string
+    experience?: string
+    notes?: NoteRequest[]
 }
 
 class EditCharService {
@@ -54,7 +63,11 @@ class EditCharService {
         spells,
         char_class,
         background,
-        story
+        story,
+        current_hp,
+        max_hp,
+        experience,
+        notes
     }: CharRequest) {
         await prismaClient.$transaction(async (prisma) => {
 
@@ -100,7 +113,11 @@ class EditCharService {
                         set: spells
                     },
                     background,
-                    story
+                    story,
+                    current_hp,
+                    max_hp,
+                    experience,
+
 
                 }
             });
@@ -108,7 +125,7 @@ class EditCharService {
             if (char_class) {
                 for (const charClass of char_class) {
                     if (charClass.id) {
-                        // Atualizar entrada existente
+
                         await prisma.charClass.update({
                             where: { id: charClass.id },
                             data: {
@@ -117,12 +134,34 @@ class EditCharService {
                             },
                         });
                     } else {
-                        // Criar nova entrada
+
                         await prisma.charClass.create({
                             data: {
                                 level: charClass.level,
                                 name: charClass.name,
                                 charId: id,
+                            },
+                        });
+                    }
+                }
+            }
+            if (notes) {
+                for (const note of notes) {
+                    if (note.id) {
+                        await prisma.note.update({
+                            where: { note_id: note.id },
+                            data: {
+                                text: note.text,
+                                date: note.date || new Date(),
+                                char_note_id: id,
+                            },
+                        });
+                    } else {
+                        await prisma.note.create({
+                            data: {
+                                text: note.text,
+                                date: note.date || new Date(),
+                                char_note_id: id,
                             },
                         });
                     }

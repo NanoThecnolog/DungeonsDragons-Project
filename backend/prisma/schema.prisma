@@ -45,7 +45,7 @@ model Char {
   int                 String      @default("0")
   wis                 String      @default("0")
   cha                 String      @default("0")
-  wealth              String      @default("-")
+  wealth              String      @default("-") //riqueza
   max_hp              String      @default("-")
   current_hp          String      @default("-")
   temporary_hp        String      @default("-")
@@ -67,6 +67,7 @@ model Char {
   cantrips            String[]
   userId              String
   user                User        @relation(fields: [userId], references: [id])
+  note                Note[]
   created_at          DateTime?   @default(now())
   updated_at          DateTime?   @default(now())
 
@@ -82,4 +83,14 @@ model CharClass {
   charId String
 
   @@map("char_classes")
+}
+
+model Note {
+  note_id      String   @id @default(uuid())
+  text         String
+  date         DateTime @default(now())
+  char_note_id String
+  char         Char     @relation(fields: [char_note_id], references: [id], onDelete: Cascade)
+
+  @@map("char_notes")
 }

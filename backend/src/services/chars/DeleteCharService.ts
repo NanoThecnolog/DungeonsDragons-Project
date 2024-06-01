@@ -17,6 +17,13 @@ class DeleteCharService {
                     }
                 })
             ])
+            await prismaClient.$transaction([
+                prismaClient.note.deleteMany({
+                    where: {
+                        char_note_id: id
+                    }
+                })
+            ])
             const char = await prismaClient.char.delete({
                 where: {
                     id: id
