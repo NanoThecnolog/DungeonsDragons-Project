@@ -14,7 +14,7 @@ class CreateUserController {
             password
         });
 
-
+        console.log(`Criando usuário. ${name} ${email}`)
         return res.json(user)
 
     }

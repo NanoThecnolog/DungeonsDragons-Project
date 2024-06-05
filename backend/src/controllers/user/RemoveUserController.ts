@@ -10,6 +10,7 @@ class RemoveUserController {
 
         const user = await removeUserService.execute(userId)
 
+        console.log("Removendo usuário")
         return res.json(user);
 
 

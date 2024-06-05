@@ -65,7 +65,7 @@ class EditCharController {
                 notes
             });
 
-            console.log(`dados do personagem: ${id} editados`)
+            console.log(`dados do personagem do id ${id} editados`)
 
             return res.json(editChar);
 

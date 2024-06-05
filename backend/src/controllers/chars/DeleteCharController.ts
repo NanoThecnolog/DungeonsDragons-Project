@@ -15,6 +15,7 @@ class DeleteCharController {
             const char = await removeCharService.execute({
                 id
             })
+            console.log(`Deletando personagem id ${id}`)
             return res.json(char)
 
         } catch (err) {

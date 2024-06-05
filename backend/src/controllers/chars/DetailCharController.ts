@@ -18,7 +18,7 @@ class DetailCharController {
             const char = await detailCharService.execute({
                 char_id
             });
-
+            console.log(`Buscando detalhes do personagem, id ${char_id}`)
             return res.json(char)
 
         } catch (err) {

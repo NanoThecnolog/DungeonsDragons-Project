@@ -12,6 +12,7 @@ class AuthUserController {
             email,
             password
         })
+        console.log(`Autenticando usuário. ${email}`)
         return res.json(auth);
     }
 }

@@ -11,6 +11,7 @@ class ListCharController {
 
         const chars = await listCharService.execute(userId);
 
+        console.log(`Listando personagens do userId ${userId}`)
         return res.json(chars)
 
 

@@ -13,6 +13,7 @@ class DetailUserController {
 
         const user = await detailUserService.execute(user_id);
 
+        console.log(`Buscando detalhes do usuario ${user_id}`)
         return res.json(user);
 
     }

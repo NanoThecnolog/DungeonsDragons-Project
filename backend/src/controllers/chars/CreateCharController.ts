@@ -33,7 +33,7 @@ class CreateCharController {
                 image
             });
 
-
+            console.log(`Criando personagem ${name}`)
             return res.json(char);
 
 
