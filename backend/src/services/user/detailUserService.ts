@@ -12,7 +12,8 @@ class DetailUserService {
                 id: true,
                 name: true,
                 email: true,
-                avatar: true
+                avatar: true,
+                char_limit: true
             }
         })
         //console.log(user_id);

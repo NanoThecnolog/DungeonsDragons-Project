@@ -1,6 +1,7 @@
 import prismaClient from "../../prisma";
 
 interface CharClass {
+    index: string;
     level: string;
     name: string;
 }
@@ -36,7 +37,7 @@ class CreateCharService {
                 race: race,
                 char_class: {
                     createMany: {
-                        data: char_class.map(({ level, name }) => ({ level, name }))
+                        data: char_class.map(({ index, level, name }) => ({ index, level, name }))
                     }
                 },
                 userId: userId,

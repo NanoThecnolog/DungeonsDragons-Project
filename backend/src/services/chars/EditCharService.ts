@@ -2,6 +2,7 @@ import prismaClient from "../../prisma";
 
 interface CharClass {
     id?: string;
+    index: string;
     level: string;
     name: string;
 }
@@ -13,6 +14,7 @@ interface NoteRequest {
 
 interface CharRequest {
     id: string
+    name?: string
     title?: string
     con?: string
     str?: string
@@ -43,6 +45,7 @@ interface CharRequest {
 class EditCharService {
     async execute({
         id,
+        name,
         title,
         con,
         str,
@@ -76,6 +79,7 @@ class EditCharService {
                     id: id
                 },
                 data: {
+                    name,
                     title,
                     con,
                     str,
@@ -129,6 +133,7 @@ class EditCharService {
                         await prisma.charClass.update({
                             where: { id: charClass.id },
                             data: {
+                                index: charClass.index,
                                 level: charClass.level,
                                 name: charClass.name,
                             },
@@ -137,6 +142,7 @@ class EditCharService {
 
                         await prisma.charClass.create({
                             data: {
+                                index: charClass.index,
                                 level: charClass.level,
                                 name: charClass.name,
                                 charId: id,

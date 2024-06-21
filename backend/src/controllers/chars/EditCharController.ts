@@ -7,6 +7,7 @@ class EditCharController {
         try {
             const {
                 id,
+                name,
                 title,
                 con,
                 str,
@@ -38,6 +39,7 @@ class EditCharController {
 
             const editChar = await editCharService.execute({
                 id,
+                name,
                 title,
                 con,
                 str,

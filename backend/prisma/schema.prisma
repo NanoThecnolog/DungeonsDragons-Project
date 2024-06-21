@@ -22,6 +22,7 @@ model User {
   email      String    @unique
   password   String
   avatar     String?
+  char_limit Int?      @default(5)
   characters Char[]
   created_at DateTime? @default(now())
   updated_at DateTime? @default(now())
@@ -76,6 +77,7 @@ model Char {
 
 model CharClass {
   id    String @id @default(uuid())
+  index String @default("")
   level String @default("1")
   name  String
   char  Char   @relation(fields: [charId], references: [id])

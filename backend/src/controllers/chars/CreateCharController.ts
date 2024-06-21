@@ -15,8 +15,8 @@ class CreateCharController {
 
             const parsedCharClass = JSON.parse(char_class);
 
-            if (!Array.isArray(parsedCharClass) || parsedCharClass.some(item => typeof item !== 'object' || !item.level || !item.name)) {
-                throw new Error('O campo char_class deve ser uma matriz de objetos com propriedades level e name');
+            if (!Array.isArray(parsedCharClass) || parsedCharClass.some(item => typeof item !== 'object' || !item.index || !item.level || !item.name)) {
+                throw new Error('O campo char_class deve ser uma matriz de objetos com propriedades index, level e nome');
             }
             if (!req.file) {
                 throw new Error("error upload file")
