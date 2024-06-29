@@ -5,7 +5,7 @@ interface CharClass {
     level: string;
     name: string;
 }
-
+//alterar o charRequest pra receber os novos dados e adicionar ? aos antigos
 interface CharRequest {
     name: string;
     race: string;

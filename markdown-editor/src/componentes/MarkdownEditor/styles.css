@@ -1,0 +1,58 @@
+.markdown-editor {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding-top: 0.5rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.textareaContainer {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0.5rem;
+}
+
+textarea {
+    width: 80%;
+    height: 100vh;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+
+
+}
+
+.preview {
+    width: 50%;
+    height: 100vh;
+    padding: 10px;
+    margin-top: 2.5rem;
+    background-color: #f5f5f5;
+    overflow-y: scroll;
+    color: #515151;
+    border-radius: 0.4rem;
+    text-align: justify;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 0.5rem;
+}
+
+.toolbar button {
+    margin: 0.2rem;
+    padding: 4px 5px;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #f17373;
+}
