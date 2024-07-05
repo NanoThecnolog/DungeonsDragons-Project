@@ -41,12 +41,15 @@ class AuthUserService {
                 expiresIn: '30d'
             }
         )
+        console.log("Autenticando usuário.")
         return {
             id: user.id,
             name: user.name,
             email: user.email,
-            token: token
+            token: token,
+            char_limit: user.char_limit
         }
+
 
     }
 }
